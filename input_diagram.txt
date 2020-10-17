@@ -1,0 +1,13 @@
+@startuml
+!include C4_Context.puml
+
+title High-level view
+
+Person(user, "Admin", "A user of the service.")
+System_Ext(payment_gateway, "Barclays payment gateway", "The payment gateway.")
+System(digital_service, "Pay for license", "The digital service that allows a user to pay for a license.")
+
+Rel(user, digital_service, "Uses")
+Rel(payment_gateway, digital_service, "After payment, returns a token")
+Rel_Back(payment_gateway, digital_service, "Sends paying customers")
+@enduml
